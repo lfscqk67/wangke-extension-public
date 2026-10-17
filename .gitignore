@@ -1,0 +1,19 @@
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+.qa/
+*.log
+*.zip
+*.crx
+*.pem
+*.key
+cookies*.json
+credentials*.json
+.DS_Store
+Thumbs.db
+
+# Machine-specific settings and scratch work
+.local/
+.ai-work/

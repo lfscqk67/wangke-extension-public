@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>网课连播助手</title>
+<style>
+  :root {
+    --red: #d32f2f; --red-dark: #b71c1c; --red-soft: #fdecea;
+    --green: #2e7d32; --green-soft: #e8f5e9;
+    --ink: #1f2328; --muted: #6b7280; --line: #eceef1; --bg: #f6f7f9;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; width: 300px; background: var(--bg); color: var(--ink);
+    font: 14px/1.5 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .wrap { padding: 14px; }
+  header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .logo {
+    width: 34px; height: 34px; border-radius: 10px; flex: none;
+    background: linear-gradient(135deg, #e53935, #b71c1c);
+    display: grid; place-items: center; box-shadow: 0 2px 6px rgba(183,28,28,.3);
+  }
+  .logo::after { content: ""; border-left: 11px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
+  h1 { font-size: 15px; margin: 0; font-weight: 700; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 2px;
+    font-size: 12px; padding: 1px 9px; border-radius: 999px; background: #eef0f3; color: var(--muted);
+  }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #9ca3af; }
+  .pill.on { background: var(--green-soft); color: var(--green); }
+  .pill.on::before { background: var(--green); }
+  .card { background: #fff; border-radius: 14px; padding: 12px 14px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .label { font-size: 12px; color: var(--muted); }
+  .big { font-size: 26px; font-weight: 700; letter-spacing: .5px; margin: 2px 0 8px; }
+  .big small { font-size: 14px; color: var(--muted); font-weight: 500; }
+  .bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #ef5350, var(--red)); transition: width .3s; }
+  .meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .now { margin-top: 10px; font-size: 13px; padding: 8px 10px; border-radius: 10px; background: var(--red-soft); color: var(--red-dark); display: none; }
+  .now.show { display: block; }
+  button {
+    margin-top: 12px; width: 100%; padding: 13px; border: 0; border-radius: 14px; cursor: pointer;
+    font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 2px;
+    background: linear-gradient(135deg, #e53935, #c62828); box-shadow: 0 4px 12px rgba(198,40,40,.3);
+    transition: transform .1s, box-shadow .2s;
+  }
+  button:hover { box-shadow: 0 6px 16px rgba(198,40,40,.4); }
+  button:active { transform: scale(.98); }
+  button.stop { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px #d1d5db; }
+  .tip { margin-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.6; padding: 0 2px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo"></div>
+      <div>
+        <h1>网课连播助手</h1>
+        <span class="pill" id="pill">已停止</span>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="label">已获线上学时</div>
+      <div class="big"><span id="hours">0</span> <small>/ <span id="target">50</span> 学时</small></div>
+      <div class="bar"><i id="bar"></i></div>
+      <div class="meta"><span id="pct">0%</span><span id="sync">尚未读取</span></div>
+      <div class="now" id="now"></div>
+    </div>
+
+    <button id="btn">开始连播</button>
+    <div class="tip">登录后点一下即可，全程自动：1.5 倍速、学完自动下一门、优先无随堂测试的课程，达到年度学时自动停止。</div>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>

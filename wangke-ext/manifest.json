@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "网课连播助手（无障碍）",
+  "version": "2.6.0",
+  "description": "山东干部网络学院：点工具栏图标一键连播未学习课程，1.5倍速，学完自动下一门，达到年度学时自动停止。",
+  "permissions": [
+    "storage",
+    "notifications",
+    "tabs",
+    "alarms",
+    "power"
+  ],
+  "host_permissions": [
+    "*://gbwlxy.dtdjzx.gov.cn/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "网课连播助手",
+    "default_popup": "options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://gbwlxy.dtdjzx.gov.cn/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ]
+}

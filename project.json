@@ -1,0 +1,10 @@
+{
+  "id": "wangke-extension",
+  "name": "网课连播助手",
+  "version": "2.6.0",
+  "repository": "https://github.com/lfscqk67/wangke-extension-public",
+  "license": "MIT",
+  "verification": "node tools/verify.js",
+  "entry": "AI_START_HERE.md",
+  "distribution": "sanitized-public-snapshot"
+}
